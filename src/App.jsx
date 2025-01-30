@@ -1,5 +1,6 @@
 import Menu from './menu.jsx';
 import Home from './home.jsx';
+import ProfilePage from './profile.jsx';
 
 function App() {
   
@@ -7,7 +8,7 @@ function App() {
   return (
     <>
       <Menu />
-      <Home />
+
     </>
   )
 }

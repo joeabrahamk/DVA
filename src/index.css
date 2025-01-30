@@ -198,3 +198,203 @@
   border-radius: 9999px;
   cursor: pointer;
 }
+
+
+/* profile */
+
+.profile-sec {
+  padding: 16px;
+  background-color: #1e1e1e;
+  color: #ffffff;
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+}
+
+.header {
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.location {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background: #333333;
+  padding: 10px 16px;
+  border-radius: 12px;
+}
+
+.location-text {
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+}
+
+.distance {
+  background-color: #4CAF50;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+/* Avatar Container */
+.avatar-container {
+  position: relative;
+  display: inline-block;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.edit-avatar-btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.edit-avatar-btn svg {
+  color: white;
+}
+
+/* Avatar Selection Modal */
+.avatar-selection {
+  position: absolute;
+  top: 70px;
+  left: 0;
+  background-color: #333333;
+  padding: 10px;
+  border-radius: 8px;
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.avatar-option {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.avatar-option:hover {
+  border-color: #4CAF50;
+}
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-name {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.profile-email {
+  font-size: 14px;
+  color: #bbbbbb;
+}
+
+.saved-locations {
+  margin-top: 20px;
+}
+
+.location-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333333;
+  padding: 12px 16px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.location-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.location-name {
+  font-size: 14px;
+  font-weight: 500;
+
+}
+
+.location-input {
+  font-size: 14px;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  color: #ffffff;
+  width: auto;
+  padding: 0;
+}
+
+.choose-map-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.add-location {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 20px;
+  align-items: center;
+}
+
+.location-input {
+  width: 80%;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #333333;
+  color: #ffffff;
+}
+
+.add-btn {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  width: 60%;
+}
