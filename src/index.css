@@ -398,3 +398,126 @@
   font-weight: bold;
   width: 60%;
 }
+
+/* History */
+.history-sec {
+  padding: 20px;
+  background-color: #1e1e1e;
+  color: #ffffff;
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.header h1 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.add-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.add-history-form {
+  background-color: #333333;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.form-group select,
+.form-group input {
+  width: 90%;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #4CAF50;
+  background-color: #1e1e1e;
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.price-input {
+  display: flex;
+  gap: 10px;
+}
+
+.price-input select {
+  width: 30%;
+}
+
+.price-input input {
+  width: 70%;
+}
+
+.date-time-input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.date-time-input input {
+  flex-grow: 1;
+}
+
+.submit-btn {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  width: 100%;
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.history-card {
+  background-color: #333333;
+  padding: 16px;
+  border-radius: 12px;
+}
+
+.history-info h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.history-info p {
+  font-size: 14px;
+  color: #bbbbbb;
+  margin-bottom: 4px;
+}
