@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { FaHome, FaClipboardList, FaUser, FaHistory } from "react-icons/fa";
 import { MdWarning } from "react-icons/md";
-import Home from "./home.jsx"; // Import your Home component
+import Home from "./home.jsx" 
 import User from "./profile.jsx";
 import History from "./history.jsx";
+import Clipboard from "./clipboard.jsx";
 
 function Menu() {
   const [activeItem, setActiveItem] = useState("home");

@@ -521,3 +521,276 @@
   color: #bbbbbb;
   margin-bottom: 4px;
 }
+
+
+
+
+/* Authpage */
+
+.auth-sec {
+  padding: 20px;
+  background-color: #1e1e1e;
+  color: #ffffff;
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-toggle {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.toggle-btn {
+  background-color: transparent;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.toggle-btn.active {
+  background-color: #4CAF50;
+}
+
+.auth-form {
+  background-color: #333333;
+  padding: 20px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #1e1e1e;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #4CAF50;
+}
+
+.input-group input {
+  flex-grow: 1;
+  background-color: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 14px;
+  outline: none;
+}
+
+.submit-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  width: 100%;
+  margin-top: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #45a049;
+}
+
+
+/* clipboard */
+/* General Styles */
+.clipboard-container {
+  padding: 20px;
+  background-color: #1e1e1e;
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+}
+
+/* Header */
+.clipboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.clipboard-header h2 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Notification Button */
+.notification-btn {
+  background-color: transparent;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  position: relative;
+}
+
+.notification-alert {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: #ff0000;
+  color: #ffffff;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
+}
+
+/* Notification Popup */
+.notification-popup {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background-color: #333333;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  width: 300px;
+}
+
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.popup-header h3 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.close-btn {
+  background-color: transparent;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.overdue-task {
+  color: #ff6b6b;
+  font-size: 14px;
+  margin-bottom: 8px;
+  padding: 8px;
+  background-color: #444444;
+  border-radius: 8px;
+}
+
+.no-notifications {
+  color: #bbbbbb;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Task Input */
+.task-input {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.input-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.task-input input {
+  flex-grow: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #4CAF50;
+  background-color: #333333;
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.task-input button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333333;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+/* Overdue Tasks */
+.task-overdue {
+  color: #ff6b6b;
+}
+
+/* Toggle Button */
+.toggle-container {
+  width: 50px;
+  height: 20px;
+  background-color: #444;
+  border-radius: 10px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.toggle-btn {
+  
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  height: 1px;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* When Active */
+.toggle-container.active {
+  background-color: #4CAF50;
+}
+
+.toggle-container.active .toggle-btn {
+  transform: translateX(20px);
+}

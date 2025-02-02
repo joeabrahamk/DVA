@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
 import { Plus, Calendar, Clock } from "lucide-react";
 
 function HistoryPage() {
@@ -9,6 +10,7 @@ function HistoryPage() {
   const [price, setPrice] = useState("");
   const [currency, setCurrency] = useState("Rupees");
   const [dateTime, setDateTime] = useState(new Date().toLocaleString());
+  const navigate = useNavigate(); // Hook for navigation
 
   const addFuelHistory = () => {
     if (quantity && price) {
@@ -19,9 +21,9 @@ function HistoryPage() {
         price: `${currency} ${price}`,
         dateTime,
       };
-      setFuelHistory([newEntry, ...fuelHistory]); // Add new entry to the top (LIFO)
-      setIsAdding(false); // Close the form
-      resetForm(); // Reset form fields
+      setFuelHistory([newEntry, ...fuelHistory]);
+      setIsAdding(false);
+      resetForm();
     }
   };
 
@@ -33,25 +35,23 @@ function HistoryPage() {
     setDateTime(new Date().toLocaleString());
   };
 
-  // Function to get font color based on fuel type
   const getFontColor = (fuelType) => {
     switch (fuelType) {
       case "Petrol":
-        return "#4CAF50"; // Green
+        return "#4CAF50";
       case "Diesel":
-        return "#2196F3"; // Blue
+        return "#2196F3";
       case "CNG":
-        return "#9E9E9E"; // Gray
+        return "#9E9E9E";
       case "Electric":
-        return "#8BC34A"; // Light Green
+        return "#8BC34A";
       default:
-        return "#FFFFFF"; // Default White
+        return "#FFFFFF";
     }
   };
 
   return (
     <div id="history" className="history-sec">
-      {/* Header */}
       <header className="header">
         <h1>Fueling History</h1>
         <button className="add-btn" onClick={() => setIsAdding(!isAdding)}>
@@ -59,7 +59,6 @@ function HistoryPage() {
         </button>
       </header>
 
-      {/* Add Fueling History Form */}
       {isAdding && (
         <div className="add-history-form">
           <div className="form-group">
@@ -123,7 +122,6 @@ function HistoryPage() {
         </div>
       )}
 
-      {/* Fueling History List */}
       <section className="history-list">
         {fuelHistory.map((entry) => (
           <div key={entry.id} className="history-card">
