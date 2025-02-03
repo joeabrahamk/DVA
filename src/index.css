@@ -526,7 +526,6 @@
 
 
 /* Authpage */
-
 .auth-sec {
   padding: 20px;
   background-color: #1e1e1e;
@@ -537,28 +536,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-.auth-toggle {
-  display: flex;
-  gap: 16px;
-  margin-bottom: 24px;
-}
-
-.toggle-btn {
-  background-color: transparent;
-  color: #ffffff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-
-.toggle-btn.active {
-  background-color: #4CAF50;
 }
 
 .auth-form {
@@ -617,8 +594,23 @@
   background-color: #45a049;
 }
 
+/* Style for switch text */
+.switch-text {
+  margin-top: 16px;
+  font-size: 14px;
+}
 
-/* clipboard */
+.switch-text span {
+  color: #4CAF50;
+  cursor: pointer;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.switch-text span:hover {
+  color: #45a049;
+}
+
 /* General Styles */
 .clipboard-container {
   padding: 20px;
@@ -743,6 +735,7 @@
   font-weight: bold;
 }
 
+/* Task List */
 .task-list {
   list-style: none;
   padding: 0;
@@ -763,34 +756,29 @@
 .task-overdue {
   color: #ff6b6b;
 }
-
-/* Toggle Button */
-.toggle-container {
-  width: 50px;
-  height: 20px;
-  background-color: #444;
-  border-radius: 10px;
-  position: relative;
+/* Complete Button */
+.complete-btn {
+  background-color: #ff9800;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
   cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
   transition: background-color 0.3s ease-in-out;
 }
 
-.toggle-btn {
-  
-  background-color: white;
-  border-radius: 50%;
-  position: absolute;
-  height: 1px;
-  top: 2px;
-  left: 2px;
-  transition: transform 0.3s ease-in-out;
+.complete-btn:hover {
+  background-color: #e68900;
 }
 
-/* When Active */
-.toggle-container.active {
+/* Completed State */
+.complete-btn.completed {
   background-color: #4CAF50;
+  cursor: default;
 }
 
-.toggle-container.active .toggle-btn {
-  transform: translateX(20px);
+.complete-btn.completed:hover {
+  background-color: #4CAF50;
 }

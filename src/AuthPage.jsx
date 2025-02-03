@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
+import { useNavigate } from "react-router-dom";
 import { User, Lock, Mail, Calendar } from "lucide-react";
 
 function AuthPage() {
@@ -8,37 +8,21 @@ function AuthPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [age, setAge] = useState("");
-  const navigate = useNavigate(); // Hook for navigation
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isLogin) {
-      // Handle login logic
       console.log("Logging in with:", { username, password });
-      navigate("/menu"); // Navigate to the Menu page after login
     } else {
-      // Handle signup logic
       console.log("Signing up with:", { name, username, password, age });
-      navigate("/menu"); // Navigate to the Menu page after signup
     }
+    navigate("/menu");
   };
 
   return (
     <div className="auth-sec">
-      <div className="auth-toggle">
-        <button
-          className={`toggle-btn ${isLogin ? "active" : ""}`}
-          onClick={() => setIsLogin(true)}
-        >
-          Login
-        </button>
-        <button
-          className={`toggle-btn ${!isLogin ? "active" : ""}`}
-          onClick={() => setIsLogin(false)}
-        >
-          Sign Up
-        </button>
-      </div>
+      <h2>{isLogin ? "Login" : "Sign Up"}</h2>
 
       <form className="auth-form" onSubmit={handleSubmit}>
         {!isLogin && (
@@ -105,6 +89,14 @@ function AuthPage() {
           {isLogin ? "Login" : "Sign Up"}
         </button>
       </form>
+
+      {/* Link to switch between Login and Sign Up */}
+      <p className="switch-text">
+        {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
+        <span onClick={() => setIsLogin(!isLogin)}>
+          {isLogin ? "Sign Up" : "Login"}
+        </span>
+      </p>
     </div>
   );
 }

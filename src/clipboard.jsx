@@ -6,30 +6,34 @@ function Clipboard() {
   const [taskName, setTaskName] = useState("");
   const [taskTime, setTaskTime] = useState("");
   const [showNotifications, setShowNotifications] = useState(false);
+  const [overdueTasks, setOverdueTasks] = useState([]);
 
   // Check for overdue tasks every minute
   useEffect(() => {
     const interval = setInterval(() => {
-      const now = new Date().getTime();
-      setTasks((prevTasks) =>
-        prevTasks.map((task) => {
-          if (!task.completed && new Date(task.time).getTime() < now) {
-            return { ...task, overdue: true };
-          }
-          return task;
-        })
-      );
+      const now = new Date();
+      const updatedTasks = tasks.map((task) => {
+        if (!task.completed && new Date(task.time).getTime() < now) {
+          task.overdue = true;
+        }
+        return task;
+      });
+      setTasks(updatedTasks);
+      setOverdueTasks(updatedTasks.filter((task) => task.overdue && !task.completed));
     }, 60000); // Check every minute
     return () => clearInterval(interval);
-  }, []);
+  }, [tasks]);
 
   // Add a new task
   const addTask = () => {
     if (taskName && taskTime) {
-      setTasks([
-        ...tasks,
-        { name: taskName, time: taskTime, completed: false, overdue: false },
-      ]);
+      const newTask = {
+        name: taskName,
+        time: taskTime,
+        overdue: false,
+        completed: false,
+      };
+      setTasks([...tasks, newTask]);
       setTaskName("");
       setTaskTime("");
     }
@@ -37,12 +41,10 @@ function Clipboard() {
 
   // Toggle Task Completion
   const toggleComplete = (index) => {
-    setTasks((prevTasks) => {
-      const updatedTasks = [...prevTasks];
-      updatedTasks[index].completed = !updatedTasks[index].completed;
-      updatedTasks[index].overdue = false; // Reset overdue status if completed
-      return updatedTasks;
-    });
+    const newTasks = [...tasks];
+    newTasks[index].completed = !newTasks[index].completed;
+    setTasks(newTasks);
+    setOverdueTasks(newTasks.filter(task => task.overdue && !task.completed));
   };
 
   return (
@@ -54,10 +56,7 @@ function Clipboard() {
           onClick={() => setShowNotifications(!showNotifications)}
           className="notification-btn"
         >
-          <Bell size={24} />
-          {tasks.some((task) => !task.completed && task.overdue) && (
-            <span className="notification-alert">!</span>
-          )}
+          {showNotifications ? 'Hide Notifications' : 'Show Notifications'}
         </button>
       </div>
 
@@ -73,15 +72,13 @@ function Clipboard() {
               <X size={20} />
             </button>
           </div>
-          {tasks.filter((task) => task.overdue).length > 0 ? (
+          {overdueTasks.length > 0 ? (
             <ul>
-              {tasks
-                .filter((task) => task.overdue)
-                .map((task, index) => (
-                  <li key={index} className="overdue-task">
-                    <span>{task.name}</span> is overdue!
-                  </li>
-                ))}
+              {overdueTasks.map((task, index) => (
+                <li key={index} className="overdue-task">
+                  <span>{task.name}</span> is overdue!
+                </li>
+              ))}
             </ul>
           ) : (
             <p className="no-notifications">No overdue tasks</p>
@@ -116,13 +113,13 @@ function Clipboard() {
               <span>{new Date(task.time).toLocaleString()}</span>
             </div>
 
-            {/* Toggle Button */}
-            <div
-              className={`toggle-container ${task.completed ? "active" : ""}`}
+            {/* Complete Button */}
+            <button
+              className={`complete-btn ${task.completed ? "completed" : ""}`}
               onClick={() => toggleComplete(index)}
             >
-              <div className="toggle-btn"></div>
-            </div>
+              {task.completed ? "Completed" : "Mark Complete"}
+            </button>
           </li>
         ))}
       </ul>
