@@ -1,6 +1,5 @@
-import { IoLocationSharp } from "react-icons/io5";
+import { MapPin,  } from "lucide-react";
 import Map from "./map";
-
 import React from "react";
 
 function Home() {
@@ -9,7 +8,7 @@ return (
         {/* Header */}
         <header className="header">
             <div className="location">
-                <span className="icon"><IoLocationSharp /></span>
+                <span className="icon"><MapPin size={20} /></span>
                 <span className="location-text">Vytilla, Kochi</span>
                 <span className="distance">28.36 km</span>
             </div>

@@ -73,6 +73,10 @@
 
 .header {
   margin-bottom: 24px;
+  padding-left: 10px;
+  padding-right: 10px;
+  display: flex;
+  align-items: center;
 }
 
 .location {
@@ -100,10 +104,11 @@
 
 .search-bar {
   margin-top: 8px;
+  width: 90%;
 }
 
 .search-input {
-  width: 100%;
+  width: 90%;
   padding: 8px;
   border: none;
   border-radius: 8px;
