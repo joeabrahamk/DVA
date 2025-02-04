@@ -20,7 +20,7 @@ function Clipboard() {
       });
       setTasks(updatedTasks);
       setOverdueTasks(updatedTasks.filter((task) => task.overdue && !task.completed));
-    }, 60000); // Check every minute
+    }, 30000); // Check every minute
     return () => clearInterval(interval);
   }, [tasks]);
 
@@ -51,7 +51,7 @@ function Clipboard() {
     <div className="clipboard-container">
       {/* Header */}
       <div className="clipboard-header">
-        <h2>Clipboard</h2>
+        <h2>Task Sheduler</h2>
         <button
           onClick={() => setShowNotifications(!showNotifications)}
           className="notification-btn"
