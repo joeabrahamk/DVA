@@ -1,6 +1,8 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Plus, Calendar, Clock } from "lucide-react";
+
+const API_BASE_URL = "http://127.0.0.1:5000"; // Ensure this matches your backend
 
 function HistoryPage() {
   const [fuelHistory, setFuelHistory] = useState([]);
@@ -10,20 +12,67 @@ function HistoryPage() {
   const [price, setPrice] = useState("");
   const [currency, setCurrency] = useState("Rupees");
   const [dateTime, setDateTime] = useState(new Date().toLocaleString());
-  const navigate = useNavigate(); // Hook for navigation
+  const navigate = useNavigate();
+  // const userId = 1; // Replace with actual user ID
 
-  const addFuelHistory = () => {
-    if (quantity && price) {
-      const newEntry = {
-        id: Date.now(),
-        fuelType,
-        quantity: `${quantity} ${fuelType === "Electric" ? "kWh" : "L"}`,
-        price: `${currency} ${price}`,
-        dateTime,
-      };
-      setFuelHistory([newEntry, ...fuelHistory]);
-      setIsAdding(false);
-      resetForm();
+  // Fetch fuel history from backend
+  const userId=localStorage.getItem("user_id")
+  const fetchHistory = async () => {
+    console.log("History called")
+    try {
+      const response = await fetch(`${API_BASE_URL}/fuel_history/${userId}`);
+      if (response.ok) {
+        const data = await response.json();
+        setFuelHistory(data.fuel_history);
+        console.log(data)
+        // setFuelHistory(data);
+      } else {
+        console.error("Failed to fetch fuel history");
+      }
+    } catch (error) {
+      console.error("Error fetching fuel history:", error);
+    }
+  };
+
+  useEffect(() => {
+
+    fetchHistory();
+  }, []);
+
+  // Add new fuel history entry
+  const addFuelHistory = async () => {
+    if (!quantity || !price) {
+      alert("Please fill in all fields.");
+      return;
+    }
+ 
+    const newEntry = {
+      user_id: userId,
+      fuel_type: fuelType,
+      quantity: parseFloat(quantity), // Ensure number format
+      price: parseFloat(price),
+      currency: currency,
+      date_time: new Date().toISOString(),
+    };
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/add_fuel_history`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newEntry),
+      });
+
+      if (response.ok) {
+        const addedEntry = await response.json();
+        // setFuelHistory([addedEntry, ...fuelHistory]);
+        setIsAdding(false);
+        fetchHistory()
+        resetForm();
+      } else {
+        console.error("Failed to add fuel history:", await response.json());
+      }
+    } catch (error) {
+      console.error("Error adding fuel history:", error);
     }
   };
 
@@ -123,18 +172,22 @@ function HistoryPage() {
       )}
 
       <section className="history-list">
-        {fuelHistory.map((entry) => (
-          <div key={entry.id} className="history-card">
-            <div className="history-info">
-              <h3 style={{ color: getFontColor(entry.fuelType) }}>
-                {entry.fuelType}
-              </h3>
-              <p>Quantity: {entry.quantity}</p>
-              <p>Price: {entry.price}</p>
-              <p>Date & Time: {entry.dateTime}</p>
+        {fuelHistory.length === 0 ? (
+          <p>No fuel history found</p>
+        ) : (
+          fuelHistory.map((entry) => (
+            <div key={entry.id} className="history-card">
+              <div className="history-info">
+                <h3 style={{ color: getFontColor(entry.fuel_type) }}>
+                  {entry.fuel_type}
+                </h3>
+                <p>Quantity: {entry.quantity} {entry.fuel_type === "Electric" ? "kWh" : "L"}</p>
+                <p>Price: {entry.currency} {entry.price}</p>
+                <p>Date & Time: {new Date(entry.date_time).toLocaleString()}</p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))
+        )}
       </section>
     </div>
   );

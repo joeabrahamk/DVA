@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Bell, X } from "lucide-react";
+import axios from "axios";
+
+const API_BASE_URL = "http://127.0.0.1:5000";
 
 function Clipboard() {
   const [tasks, setTasks] = useState([]);
@@ -8,12 +11,32 @@ function Clipboard() {
   const [showNotifications, setShowNotifications] = useState(false);
   const [overdueTasks, setOverdueTasks] = useState([]);
 
+  const userId = localStorage.getItem("user_id");
+
+  // Fetch tasks from backend
+  const fetchTasks = async () => {
+    try {
+      const response = await axios.get(`${API_BASE_URL}/tasks/${userId}`);
+      if (response.status === 200) {
+        setTasks(response.data.tasks);
+      } else {
+        console.error("Failed to fetch tasks");
+      }
+    } catch (error) {
+      console.error("Error fetching tasks:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchTasks();
+  }, []);
+
   // Check for overdue tasks every minute
   useEffect(() => {
     const interval = setInterval(() => {
       const now = new Date();
       const updatedTasks = tasks.map((task) => {
-        if (!task.completed && new Date(task.time).getTime() < now) {
+        if (!task.completed && new Date(task.created_at).getTime() < now) {
           task.overdue = true;
         }
         return task;
@@ -25,17 +48,25 @@ function Clipboard() {
   }, [tasks]);
 
   // Add a new task
-  const addTask = () => {
+  const addTask = async () => {
     if (taskName && taskTime) {
       const newTask = {
-        name: taskName,
-        time: taskTime,
-        overdue: false,
-        completed: false,
+        user_id: userId,
+        content: taskName,
+        created_at: taskTime,
       };
-      setTasks([...tasks, newTask]);
-      setTaskName("");
-      setTaskTime("");
+      try {
+        const response = await axios.post(`${API_BASE_URL}/add_task`, newTask);
+        if (response.status === 201) {
+          fetchTasks();
+          setTaskName("");
+          setTaskTime("");
+        } else {
+          console.error("Failed to add task");
+        }
+      } catch (error) {
+        console.error("Error adding task:", error);
+      }
     }
   };
 
@@ -51,7 +82,7 @@ function Clipboard() {
     <div className="clipboard-container">
       {/* Header */}
       <div className="clipboard-header">
-        <h2>Task Sheduler</h2>
+        <h2>Task Scheduler</h2>
         <button
           onClick={() => setShowNotifications(!showNotifications)}
           className="notification-btn"
@@ -76,7 +107,7 @@ function Clipboard() {
             <ul>
               {overdueTasks.map((task, index) => (
                 <li key={index} className="overdue-task">
-                  <span>{task.name}</span> is overdue!
+                  <span>{task.content}</span> is overdue!
                 </li>
               ))}
             </ul>
@@ -109,8 +140,8 @@ function Clipboard() {
         {tasks.map((task, index) => (
           <li key={index} className="task-item">
             <div className={task.overdue ? "task-overdue" : ""}>
-              <p>{task.name}</p>
-              <span>{new Date(task.time).toLocaleString()}</span>
+              <p>{task.content}</p>
+              <span>{new Date(task.created_at).toLocaleString()}</span>
             </div>
 
             {/* Complete Button */}

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { MapPin, Home, Briefcase, Plus, Edit } from "lucide-react";
 
 // Sample avatar images
@@ -10,13 +11,36 @@ const sampleAvatars = [
 ];
 
 function ProfilePage() {
+  const [user, setUser] = useState({
+    name: "Loading...",
+    email: "Loading..",
+    avatar: sampleAvatars[0], // Default avatar
+  });
   const [locations, setLocations] = useState([
     { name: "Home", icon: <Home />, editable: false },
     { name: "Work", icon: <Briefcase />, editable: false },
   ]);
   const [newLocation, setNewLocation] = useState("");
-  const [avatar, setAvatar] = useState(sampleAvatars[0]); // Default avatar
-  const [isEditingAvatar, setIsEditingAvatar] = useState(false); // State for avatar edit mode
+  const [isEditingAvatar, setIsEditingAvatar] = useState(false);
+
+  // Fetch user data from backend
+  useEffect(() => {
+    const user_id=localStorage.getItem("user_id");
+    console.log(user_id)
+    axios
+      .get("/user/"+user_id, { withCredentials: true }) // Ensure CORS is handled
+      .then((response) => {
+        console.log(response.data);
+        setUser({
+          name: response.data.name,
+          email: response.data.email,
+          avatar: response.data.avatar || sampleAvatars[2],
+        });
+      })
+      .catch((error) => {
+        console.error("Error fetching user data:", error);
+      });
+  }, []);
 
   const addLocation = () => {
     if (newLocation.trim() !== "") {
@@ -29,8 +53,8 @@ function ProfilePage() {
   };
 
   const handleAvatarClick = (selectedAvatar) => {
-    setAvatar(selectedAvatar); // Update the avatar
-    setIsEditingAvatar(false); // Close the avatar selection modal
+    setUser({ ...user, avatar: selectedAvatar });
+    setIsEditingAvatar(false);
   };
 
   return (
@@ -44,7 +68,7 @@ function ProfilePage() {
         </div>
         <div className="profile">
           <div className="avatar-container">
-            <img src={avatar} alt="Avatar" className="avatar" />
+            <img src={user.avatar} alt="Avatar" className="avatar" />
             <button
               className="edit-avatar-btn"
               onClick={() => setIsEditingAvatar(!isEditingAvatar)}
@@ -66,8 +90,8 @@ function ProfilePage() {
             )}
           </div>
           <div className="profile-info">
-            <h2 className="profile-name">Liya Sara Thomas</h2>
-            <p className="profile-email">liyasarathomas2@gmail.com</p>
+            <h2 className="profile-name">{user.name}</h2>
+            <p className="profile-email">{user.email}</p>
           </div>
         </div>
       </header>
