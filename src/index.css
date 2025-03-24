@@ -254,6 +254,8 @@
   margin-top: 16px;
 }
 
+
+
 /* Avatar Container */
 .avatar-container {
   position: relative;
@@ -346,7 +348,7 @@
 .location-info {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 5px;
 }
 
 .location-name {
@@ -361,7 +363,7 @@
   background-color: transparent;
   outline: none;
   color: #ffffff;
-  width: auto;
+  width:auto;
   padding: 0;
 }
 
@@ -369,11 +371,18 @@
   background-color: #4CAF50;
   color: white;
   border: none;
-  padding: 6px 14px;
+  padding: 8px 10px;
   border-radius: 8px;
   cursor: pointer;
   font-size: 12px;
   font-weight: bold;
+  width:150px;
+  height: 37px;
+  transition: background-color 0.3s ease;
+}
+
+.choose-map-btn:hover {
+  background-color: #307e34;
 }
 
 .add-location {
@@ -382,14 +391,17 @@
   gap: 5px;
   margin-top: 20px;
   align-items: center;
+  width: auto;
 }
 
 .location-input {
-  width: 80%;
+  width: 60%; /* Adjust the width of the input field */
   padding: 10px;
   border-radius: 8px;
   background-color: #333333;
   color: #ffffff;
+  border: none;
+  font-size: 14px;
 }
 
 .add-btn {
@@ -399,9 +411,13 @@
   padding: 10px 16px;
   border-radius: 8px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: bold;
-  width: 60%;
+  transition: background-color 0.3s ease;
+}
+
+.add-btn:hover {
+  background-color: #2c752f;
 }
 
 /* History */

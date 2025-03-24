@@ -43,7 +43,7 @@ function Clipboard() {
       });
       setTasks(updatedTasks);
       setOverdueTasks(updatedTasks.filter((task) => task.overdue && !task.completed));
-    }, 30000); // Check every minute
+    }, 3000); // Check every minute
     return () => clearInterval(interval);
   }, [tasks]);
 
