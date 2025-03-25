@@ -33,7 +33,10 @@ function Menu() {
         <a
           href="#sos"
           className="menu-item sos"
-          onClick={() => handleItemClick("sos")}
+          onClick={(e) => {
+            e.preventDefault(); // Prevent the default anchor behavior
+            window.location.href = "tel:9744737096"; // Redirect to the phone number
+          }}
         >
           <MdWarning />
         </a>
