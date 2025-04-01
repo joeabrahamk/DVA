@@ -102,6 +102,25 @@
   font-size: 12px;
 }
 
+.search-sec{
+  display: flex;
+  width: 90%;
+  gap: 0px;
+  
+  justify-content: center;
+  align-items: center;
+
+}
+
+.s-btn{
+  background-color:#45a049;
+  width: fit-content;
+  height: fit-content;
+  border: 50%;
+  display: flex;
+
+}
+
 .search-bar {
   margin-top: 8px;
   width: 90%;

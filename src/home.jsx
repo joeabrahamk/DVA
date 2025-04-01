@@ -1,6 +1,9 @@
 import { MapPin,  } from "lucide-react";
 import Map from "./map";
 import React from "react";
+import { FaSearchLocation } from "react-icons/fa";
+
+
 
 function Home() {
 return (
@@ -12,12 +15,17 @@ return (
                 <span className="location-text">Vytilla, Kochi</span>
                 <span className="distance">28.36 km</span>
             </div>
+            <div className="search-sec">
             <div className="search-bar">
                 <input
                     type="text"
                     placeholder="Search Destinations"
                     className="search-input"
                 />
+            </div>
+            <button className="s-btn">
+                <span className="icon"><FaSearchLocation  size={15} /></span>
+            </button>
             </div>
         </header>
 
@@ -52,7 +60,7 @@ return (
                 ))}
             </div>
 
-            {/* Fuel Types */}
+            {/* Fuel Types 
             <div className="fuel-types">
                 {["PETROL", "DIESEL", "CNG", "ELECTRIC"].map((type, index) => (
                     <button key={index} className="fuel-button">
@@ -60,6 +68,7 @@ return (
                     </button>
                 ))}
             </div>
+            */}
         </section>
     </div>
 );
