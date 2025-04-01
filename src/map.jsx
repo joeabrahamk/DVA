@@ -4,6 +4,7 @@ import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import "leaflet-routing-machine/dist/leaflet-routing-machine.css";
 import "leaflet-routing-machine";
+import "./index.css"; // Import the custom CSS file
 
 // Fix for default Leaflet marker icon not displaying
 delete L.Icon.Default.prototype._getIconUrl;
@@ -146,28 +147,25 @@ const Map = () => {
   };
 
   return (
-    <div className="h-full w-screen ">
+    <div className="realmap-container">
       {/* Search Bar for Destination */}
-      <div className="absolute bottom-4 left-4 z-10 bg-white p-2 rounded shadow-md w-72">
+      <div className="realmap-search-bar">
         <input
           type="text"
           placeholder="Search destination"
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
-          className="border p-2 w-full rounded mb-2"
+          className="realmap-search-input"
         />
-        <button
-          onClick={handleSearch}
-          className="mb-2 bg-green-500 text-white px-4 py-2 rounded w-full"
-        >
+        <button onClick={handleSearch} className="realmap-search-button">
           Search Destination
         </button>
         {searchResults.length > 0 && (
-          <ul className="bg-white border rounded shadow-md max-h-40 overflow-auto">
+          <ul className="realmap-search-results">
             {searchResults.map((result, index) => (
               <li
                 key={index}
-                className="p-2 cursor-pointer hover:bg-gray-200"
+                className="realmap-search-result-item"
                 onClick={() =>
                   handleSelectLocation(
                     parseFloat(result.lat),
@@ -187,7 +185,7 @@ const Map = () => {
         <MapContainer
           center={startPoint}
           zoom={11}
-          style={{ height: "100%", width: "100%" }}
+          className="realmap-map-container"
         >
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

@@ -51,7 +51,7 @@
 
 .menu-item.active {
   background-color: #ffffff; /* Adjust the active background color as needed */
-  color: #0a0a4e /* Adjust the active text color as needed */
+  color: #0a0a4e; /* Adjust the active text color as needed */
 }
 
 .menu-item.sos {
@@ -61,7 +61,6 @@
 .menu-item.sos:hover {
   background-color: #ff6666;
 }
-
 
 /* Home.css */
 .home-sec {
@@ -102,23 +101,21 @@
   font-size: 12px;
 }
 
-.search-sec{
+.search-sec {
   display: flex;
   width: 90%;
   gap: 0px;
-  
+
   justify-content: center;
   align-items: center;
-
 }
 
-.s-btn{
-  background-color:#45a049;
+.s-btn {
+  background-color: #45a049;
   width: fit-content;
   height: fit-content;
   border: 50%;
   display: flex;
-
 }
 
 .search-bar {
@@ -146,7 +143,7 @@
 }
 
 .map-container {
-  position: relative;
+  height: 550px;
   border-radius: 12px;
   overflow: hidden;
 }
@@ -159,6 +156,92 @@
 .map-info {
   padding: 12px;
   background-color: #333333;
+}
+
+.realmap-container {
+  height: 100%;
+  width: 100%;
+  color: black;
+}
+.realmap-search-bar {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 700;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 80%; /* Adjust the width as needed */
+  max-width: 600px; /* Set a maximum width */
+  padding: 4px; /* Add padding for better spacing */
+}
+
+.realmap-search-input {
+  flex: 1; /* Make the input take up the remaining space */
+  border: 1px solid #ccc;
+  padding: 12px;
+  border-radius: 8px 0 0 8px; /* Rounded corners for the left side */
+  font-size: 16px;
+  outline: none;
+}
+
+.realmap-search-input::placeholder {
+  color: #aaa; /* Placeholder text color */
+}
+
+.realmap-search-button {
+  background-color: #38a169;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 0 8px 8px 0; /* Rounded corners for the right side */
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.realmap-search-button:hover {
+  background-color: #2f855a; /* Darker green on hover */
+}
+
+.realmap-search-results {
+  position: absolute;
+  top: 60px; /* Adjust to appear below the search bar */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-height: 200px;
+  overflow-y: auto;
+  width: 80%; /* Match the width of the search bar */
+  max-width: 600px; /* Match the max-width of the search bar */
+  z-index: 100;
+}
+
+.realmap-search-result-item {
+  padding: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  border-bottom: 1px solid #eee;
+}
+
+.realmap-search-result-item:last-child {
+  border-bottom: none; /* Remove border for the last item */
+}
+
+.realmap-search-result-item:hover {
+  background-color: #f0f0f0;
+}
+
+.realmap-map-container {
+  height: 100%;
+  width: 100%;
 }
 
 .duration,
@@ -223,7 +306,6 @@
   cursor: pointer;
 }
 
-
 /* profile */
 
 .profile-sec {
@@ -231,7 +313,7 @@
   background-color: #1e1e1e;
   color: #ffffff;
   min-height: 100vh;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .header {
@@ -259,7 +341,7 @@
 }
 
 .distance {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   padding: 6px 14px;
   border-radius: 20px;
   font-size: 12px;
@@ -272,8 +354,6 @@
   gap: 12px;
   margin-top: 16px;
 }
-
-
 
 /* Avatar Container */
 .avatar-container {
@@ -292,7 +372,7 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  background-color: #4CAF50;
+  background-color: #4caf50;
   border: none;
   border-radius: 50%;
   width: 24px;
@@ -331,7 +411,7 @@
 }
 
 .avatar-option:hover {
-  border-color: #4CAF50;
+  border-color: #4caf50;
 }
 .profile-info {
   display: flex;
@@ -373,7 +453,6 @@
 .location-name {
   font-size: 14px;
   font-weight: 500;
-
 }
 
 .location-input {
@@ -382,12 +461,12 @@
   background-color: transparent;
   outline: none;
   color: #ffffff;
-  width:auto;
+  width: auto;
   padding: 0;
 }
 
 .choose-map-btn {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   border: none;
   padding: 8px 10px;
@@ -395,7 +474,7 @@
   cursor: pointer;
   font-size: 12px;
   font-weight: bold;
-  width:150px;
+  width: 150px;
   height: 37px;
   transition: background-color 0.3s ease;
 }
@@ -424,7 +503,7 @@
 }
 
 .add-btn {
-  background-color: #007BFF;
+  background-color: #007bff;
   color: white;
   border: none;
   padding: 10px 16px;
@@ -445,7 +524,7 @@
   background-color: #1e1e1e;
   color: #ffffff;
   min-height: 100vh;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .header {
@@ -461,7 +540,7 @@
 }
 
 .add-btn {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   border: none;
   padding: 10px 16px;
@@ -497,7 +576,7 @@
   width: 90%;
   padding: 8px;
   border-radius: 8px;
-  border: 1px solid #4CAF50;
+  border: 1px solid #4caf50;
   background-color: #1e1e1e;
   color: #ffffff;
   font-size: 14px;
@@ -527,7 +606,7 @@
 }
 
 .submit-btn {
-  background-color: #007BFF;
+  background-color: #007bff;
   color: white;
   border: none;
   padding: 10px 16px;
@@ -562,16 +641,13 @@
   margin-bottom: 4px;
 }
 
-
-
-
 /* Authpage */
 .auth-sec {
   padding: 20px;
   background-color: #1e1e1e;
   color: #ffffff;
   min-height: 100vh;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -604,7 +680,7 @@
   background-color: #1e1e1e;
   padding: 10px;
   border-radius: 8px;
-  border: 1px solid #4CAF50;
+  border: 1px solid #4caf50;
 }
 
 .input-group input {
@@ -617,7 +693,7 @@
 }
 
 .submit-btn {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   border: none;
   padding: 10px 16px;
@@ -641,7 +717,7 @@
 }
 
 .switch-text span {
-  color: #4CAF50;
+  color: #4caf50;
   cursor: pointer;
   font-weight: bold;
   transition: color 0.3s ease;
@@ -656,7 +732,7 @@
   padding: 20px;
   background-color: #1e1e1e;
   color: #ffffff;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   min-height: 100vh;
 }
 
@@ -758,14 +834,14 @@
   flex-grow: 1;
   padding: 10px;
   border-radius: 8px;
-  border: 1px solid #4CAF50;
+  border: 1px solid #4caf50;
   background-color: #333333;
   color: #ffffff;
   font-size: 14px;
 }
 
 .task-input button {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   border: none;
   padding: 10px 16px;
@@ -815,10 +891,10 @@
 
 /* Completed State */
 .complete-btn.completed {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   cursor: default;
 }
 
 .complete-btn.completed:hover {
-  background-color: #4CAF50;
+  background-color: #4caf50;
 }
